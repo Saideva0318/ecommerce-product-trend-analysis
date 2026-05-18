@@ -1,44 +1,42 @@
-# 🛍️ E-commerce Product Trend Analysis
+# 🛒 E-commerce Product Trend Analysis
 
 ## Problem Statement
-E-commerce businesses need to understand which products are trending, when demand peaks, and how buying patterns evolve to optimize inventory, marketing, and pricing strategies.
+E-commerce companies need to understand which products are trending, identify seasonal demand patterns, and optimize inventory. This project analyzes product performance trends across categories, time periods, and customer segments.
 
 ## Approach
-1. **Data Generation** — Synthetic online retail transactions dataset (orders, products, users)
-2. **EDA** — Sales velocity, product lifecycle analysis, category performance
-3. **Trend Detection** — Moving averages, seasonal decomposition, growth rates
-4. **Market Basket Analysis** — Association rules (Apriori) for cross-sell recommendations
-5. **Product Ranking** — Composite scoring by revenue, growth, and reviews
-6. **Visualization** — Interactive trend dashboards, heatmaps, product scorecards
+1. **Data Simulation** – 12 months of transaction data across 5 product categories
+2. **Market Basket Analysis** – Apriori algorithm to find frequently co-purchased items
+3. **Trend Detection** – Rolling averages, seasonal decomposition (STL), MoM velocity
+4. **Product Scoring** – Composite score: revenue + growth rate + review rating
+5. **Visualization** – Trend dashboards, heatmaps, category comparisons
 
 ## Tech Stack
-| Tool | Purpose |
-|------|---------|
-| Python 3.10+ | Core language |
-| Pandas / NumPy | Data manipulation |
-| Plotly / Dash | Interactive visualizations |
-| MLxtend | Apriori & association rules |
-| Statsmodels | Seasonal decomposition |
-| Matplotlib / Seaborn | Static charts |
-| Jupyter Notebook | Analysis notebooks |
+| Layer | Technology |
+|-------|------------|
+| Language | Python 3.10+ |
+| Data Processing | Pandas, NumPy |
+| Statistical Analysis | SciPy, statsmodels |
+| Market Basket | mlxtend (Apriori, AssociationRules) |
+| Visualization | Plotly, Seaborn, Matplotlib |
 
 ## Project Structure
 ```
 ecommerce-product-trend-analysis/
 ├── data/
-│   ├── raw/                    # Raw order/product data
-│   └── processed/              # Feature-engineered data
+│   ├── raw/                     # Raw transaction data
+│   └── processed/               # Aggregated & encoded data
 ├── notebooks/
-│   ├── 01_eda_trends.ipynb     # EDA & trend exploration
-│   └── 02_market_basket.ipynb  # Market basket analysis
+│   └── trend_analysis.ipynb
 ├── src/
-│   ├── data_generator.py       # Synthetic data creation
-│   ├── trend_analyzer.py       # Trend detection & scoring
-│   ├── market_basket.py        # Apriori association rules
-│   └── visualizations.py       # Chart generation
-├── outputs/
-│   └── reports/                # Generated reports
+│   ├── __init__.py
+│   ├── data_generator.py         # Mock transaction data
+│   ├── trend_analysis.py         # Trend detection logic
+│   ├── market_basket.py          # Apriori association rules
+│   └── product_scorer.py         # Composite product ranking
+├── tests/
+│   └── test_trends.py
 ├── requirements.txt
+├── .gitignore
 └── README.md
 ```
 
@@ -46,15 +44,22 @@ ecommerce-product-trend-analysis/
 ```bash
 git clone https://github.com/Saideva0318/ecommerce-product-trend-analysis.git
 cd ecommerce-product-trend-analysis
+python -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
 
-python src/data_generator.py
-python src/trend_analyzer.py
+# Run full analysis
+python src/trend_analysis.py
 python src/market_basket.py
+python src/product_scorer.py
 ```
 
-## Key Insights Delivered
-- Top trending products (30-day momentum)
-- Seasonal demand patterns per category
-- Product association rules ("customers who bought X also bought Y")
-- Revenue concentration (top 20% of products = 80% revenue)
+## Key Analyses
+- **Seasonal Trends**: Identify holiday spikes and off-season dips per category
+- **Market Basket**: "Customers who bought X also bought Y" associations
+- **Velocity Tracking**: Products with fastest MoM revenue growth
+- **Category Share**: Market share shifts over time
+- **Product Scoring**: Data-driven ranking to prioritize inventory & promotions
+
+## License
+MIT
